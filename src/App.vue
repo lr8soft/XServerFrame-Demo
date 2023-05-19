@@ -1,15 +1,28 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <el-container>
+    <el-header>
+      <UniformHeader/>
+    </el-header>
+
+    <el-main>
+      <router-view></router-view>
+    </el-main>
+
+  </el-container>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import UniformHeader from "@/components/UniformHeader.vue";
+import {useGlobalData} from "@/service/globalData";
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    UniformHeader
+  },
+  data(){
+    return{
+      userData: useGlobalData()
+    }
   }
 }
 </script>
@@ -19,8 +32,5 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
